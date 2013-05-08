@@ -1,4 +1,4 @@
-name    'aethylred-blank'
+name    'aethylred-liquidprompt'
 version '0.0.1'
 source 'UNKNOWN'
 author 'aethylred'
