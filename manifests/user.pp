@@ -61,7 +61,8 @@ define liquidprompt::user(
     group   => $group,
   }
 
-  file_line{'enable_liquiprompt':
+  file_line{"enable_liquidprompt_in_${shell}rc":
+    ensure  => present,
     line    => ". ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
     require => [File[$liquidprompt_rc],Git::Repo['install_liquidprompt']]
