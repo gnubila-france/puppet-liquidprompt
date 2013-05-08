@@ -33,8 +33,17 @@ define liquidprompt::user(
   }
 
   $liquidprompt_dir = "${real_home}/.liquidprompt"
-  $liquidprompt_rc = "${real_home}/.config/liquidpromptrc"
+  $liquidprompt_config_dir = "${real_home}/.config"
+  $liquidprompt_rc = "${liquidprompt_config_dir}/liquidpromptrc"
   $liquidprompt_file = "${liquidprompt_dir}/liquidprompt"
+
+  if ! defined(File[$liquidprompt_config_dir]){
+    file{$liquidprompt_config_dir:
+      ensure  => directory,
+      owner   => $user,
+      group   => $group,
+    }
+  }
 
   git::repo{'install_liquidprompt':
     path    => $liquidprompt_dir,
