@@ -8,6 +8,7 @@ Liquid prompt is installed (currently) on a per-user basis using the `liquidprom
 
 ```
 include git
+include liquidprompt
 liquidprompt::user{'name': }
 ```
 

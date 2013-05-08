@@ -18,9 +18,7 @@ define liquidprompt::user(
   validate_string($bash)
 
   $compatible_shells = ['bash','zsh']
-  if ! validate_re($shell, $compatible_shells){
-    fail("LiquidPrompt is not compatible with ${shell}, only bash and zsh are supported.")
-  }
+  validate_re($shell, $compatible_shells)
 
   # Check for acpi if battery is selected.
   if $battery {
