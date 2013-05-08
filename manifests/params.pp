@@ -1,3 +1,3 @@
 class liquidprompt::params{
-  $repository = 'git://github.com/nojhan/liquidprompt.git'
+  $repository = 'https://github.com/nojhan/liquidprompt.git'
 }

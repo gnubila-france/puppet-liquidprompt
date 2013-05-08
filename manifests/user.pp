@@ -54,7 +54,7 @@ define liquidprompt::user(
     group   => $group,
   }
 
-  file{"${liquidprompt_rc}":
+  file{$liquidprompt_rc:
     ensure  => file,
     content => template('liquidprompt/liquidpromptrc.erb'),
     owner   => $user,
@@ -62,8 +62,9 @@ define liquidprompt::user(
   }
 
   file_line{'enable_liquiprompt':
-    line => ". ${liquidprompt_file}",
-    path => "${real_home}/.${shell}rc"
+    line    => ". ${liquidprompt_file}",
+    path    => "${real_home}/.${shell}rc",
+    require => [File[$liquidprompt_rc],Git::Repo['install_liquidprompt']]
   }
 
 }
