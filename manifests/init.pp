@@ -27,7 +27,7 @@
 #     along with the liquidprompt Puppet module.  If not, see <http://www.gnu.org/licenses/>.
 
 # [Remember: No empty lines between comments and class definition]
-class liquidprompt {
+class liquidprompt inherits liquidprompt::params {
 
 # This class currently does nothing, but is kept for the potential for
 # a system level install of liquidprompt

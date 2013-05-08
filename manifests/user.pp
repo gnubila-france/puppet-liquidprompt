@@ -7,7 +7,10 @@ define liquidprompt::user(
   $home       = false,
   $shell      = 'bash',
   $battery    = undef
-) inherits liquidprompt::params {
+){
+
+  require liquidprompt
+  require liquidprompt::params
 
   # Validating parameters
   if $battery { validate_bool($battery) }
