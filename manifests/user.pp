@@ -45,7 +45,7 @@ define liquidprompt::user(
     }
   }
 
-  git::repo{'install_liquidprompt':
+  git::repo{'install_liquidprompt_${user}':
     path    => $liquidprompt_dir,
     source  => $repository,
     branch  => $branch,
@@ -59,13 +59,14 @@ define liquidprompt::user(
     content => template('liquidprompt/liquidpromptrc.erb'),
     owner   => $user,
     group   => $group,
+    require => File[$liquidprompt_config_dir],
   }
 
   file_line{"enable_liquidprompt_in_${shell}rc":
     ensure  => present,
     line    => ". ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
-    require => [File[$liquidprompt_rc],Git::Repo['install_liquidprompt']]
+    require => [File[$liquidprompt_rc],Git::Repo['install_liquidprompt_${user}']]
   }
 
 }
