@@ -45,7 +45,7 @@ define liquidprompt::user(
     }
   }
 
-  git::repo{"install_liquidprompt_${user}:
+  git::repo{"install_liquidprompt_${user}":
     path    => $liquidprompt_dir,
     source  => $repository,
     branch  => $branch,
