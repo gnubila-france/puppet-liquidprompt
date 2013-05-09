@@ -62,7 +62,7 @@ define liquidprompt::user(
     require => File[$liquidprompt_config_dir],
   }
 
-  file_line{"enable_liquidprompt_in_${shell}rc":
+  file_line{"enable_liquidprompt_in_${shell}rc_for_${user}":
     ensure  => present,
     line    => ". ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
