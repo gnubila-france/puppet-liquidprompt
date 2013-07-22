@@ -45,13 +45,11 @@ define liquidprompt::user(
     }
   }
 
-  git::repo{"install_liquidprompt_${user}":
-    path    => $liquidprompt_dir,
-    source  => $repository,
-    branch  => $branch,
-    update  => $update,
-    owner   => $user,
-    group   => $group,
+  vcsrepo { $path:
+    ensure    => present,
+    provider  => git,
+    user      => $user,
+    source    => $repository
   }
 
   file{$liquidprompt_rc:
@@ -66,7 +64,7 @@ define liquidprompt::user(
     ensure  => present,
     line    => ". ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
-    require => [File[$liquidprompt_rc],Git::Repo["install_liquidprompt_${user}"]]
+    require => [File[$liquidprompt_rc],Vcsrepo[$path]]
   }
 
 }

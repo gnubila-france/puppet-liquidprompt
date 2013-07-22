@@ -29,8 +29,6 @@
 # [Remember: No empty lines between comments and class definition]
 class liquidprompt inherits liquidprompt::params {
 
-require git
-
 # This class currently does nothing, but is kept for the potential for
 # a system level install of liquidprompt
 
