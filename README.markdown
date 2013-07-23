@@ -7,7 +7,6 @@ This module installs the [LiquidPrompt](https://github.com/nojhan/liquidprompt)
 Liquid prompt is installed (currently) on a per-user basis using the `liquidprompt::user` resource:
 
 ```
-include git
 include liquidprompt
 liquidprompt::user{'name': }
 ```
@@ -16,7 +15,7 @@ This will install liquidprompt for that user using the default settings.
 
 # Dependencies
 
-* [git](https://github.com/nesi/puppet-git)
+* [vcsrepo](https://github.com/puppetlabs/puppetlabs-vcsrepo)
 * [stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 
 # References
