@@ -45,7 +45,7 @@ define liquidprompt::user(
     }
   }
 
-  vcsrepo { $path:
+  vcsrepo {$liquidprompt_dir:
     ensure    => present,
     provider  => git,
     user      => $user,
@@ -64,7 +64,7 @@ define liquidprompt::user(
     ensure  => present,
     line    => ". ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
-    require => [File[$liquidprompt_rc],Vcsrepo[$path]]
+    require => [File[$liquidprompt_rc],Vcsrepo[$liquidprompt_dir]]
   }
 
 }
