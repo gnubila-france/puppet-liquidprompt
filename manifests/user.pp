@@ -62,7 +62,7 @@ define liquidprompt::user(
 
   file_line{"enable_liquidprompt_in_${shell}rc_for_${user}":
     ensure  => present,
-    line    => ". ${liquidprompt_file}",
+    line    => "unset PROMPT_COMMAND && . ${liquidprompt_file}",
     path    => "${real_home}/.${shell}rc",
     require => [File[$liquidprompt_rc],Vcsrepo[$liquidprompt_dir]]
   }
